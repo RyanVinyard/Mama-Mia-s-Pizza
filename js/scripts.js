@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Business logic
 function Pizza(size, cheese, sauce, meat, veggies, crust) {
   this.pizzaSize = size;
@@ -59,7 +60,6 @@ $(document).ready(function() {
     var size = $("input:radio[name=size]:checked").val();
     var cheese = $("input:radio[name=cheeseAmount]:checked").val();
     var pizza = new Pizza(size);
-
     var totalCost = pizza.pizzaFinalCost();
     $("#totalCost").text("$" + totalCost + "!");
   });
