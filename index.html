@@ -15,67 +15,80 @@
     <div class="container">
       <h1>Mama Mia's Pizzeria</h1>
       <h2>"Home of the Spicy Pizza!"<h2>
+
       <hr>
+
       <h3>Hey Pie-zano, what size of pizza does your little heart desire?</h3>
-      <div id="pizzaSize">
-        <form id = "pizzaForm">
+
+      <form id="pizzaForm">
+        <div id="pizzaSize">
           <div class="radio-inline">
-            <label><input type="radio" name="size">Super Mama Large!</label>
+            <label><input type="radio" name="size" value="xlarge" required>Super Mama Large!</label>
           </div>
           <div class="radio-inline">
-            <label><input type="radio" name="size">Large!</label>
+            <label><input type="radio" name="size" value="large" required>Large!</label>
           </div>
           <div class="radio-inline">
-            <label><input type="radio" name="size">Medium!</label>
+            <label><input type="radio" name="size" value="medium" required>Medium!</label>
           </div>
           <div class="radio-inline">
-            <label><input type="radio" name="size">Personal Pie-zano!</label>
+            <label><input type="radio" name="size" value="small" required>Personal Pie-zano!</label>
           </div>
         </div>
+
         <br>
+
         <h3>All right you little spicy meatball! How would you like the cheese?</h3>
-        <div class="radio-inline">
-          <label><input type="radio" name="cheeseAmount">Lotsa Cheese!</label>
+        <div id="cheeseAmount">
+          <div class="radio-inline">
+            <label><input type="radio" name="cheeseAmount" value="extraCheese" required>Lotsa Cheese!</label>
+          </div>
+          <div class="radio-inline">
+            <label><input type="radio" name="cheeseAmount" value="regularCheese" required>Regular Cheese!</label>
+          </div>
+          <div class="radio-inline">
+            <label><input type="radio" name="cheeseAmount" value="noCheese" required>No cheese, please!</label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label><input type="radio" name="cheeseAmount">Regular Cheese!</label>
-        </div>
-        <div class="radio-inline">
-          <label><input type="radio" name="cheeseAmount">No cheese, please!</label>
-        </div>
+
         <br>
+
         <h3>What delicious variety of fine Italian sauce would you like on your pizza?</h3>
         <div class="radio-inline">
-          <label><input type="radio" name="sauce">Marinara (red sauce)!</label>
+          <label><input type="radio" name="sauce" value="red" required>Marinara (red sauce)!</label>
         </div>
         <div class="radio-inline">
-          <label><input type="radio" name="sauce">Garlic Alfredo (white sauce)!</label>
+          <label><input type="radio" name="sauce" value="white" required>Garlic Alfredo (white sauce)!</label>
         </div>
         <div class="radio-inline">
-          <label><input type="radio" name="sauce">BBQ Sauce</label>
+          <label><input type="radio" name="sauce" value="bbq" required>BBQ Sauce</label>
         </div>
         <div class="radio-inline">
-          <label><input type="radio" name="sauce">I do not desire fine Italian sauce (no sauce)!</label>
+          <label><input type="radio" name="sauce" value="noSauce" required>I do not desire fine Italian sauce (no sauce)!</label>
         </div>
+
         <h3>Ok, you little rascal, what sort of meats do you want?</h3>
-        <div class="checkbox-inline">
-          <label><input type="checkbox" value="pepperoni">Pepperoni</label>
+        <div id="meatToppings">
+          <div class="checkbox-inline">
+            <label><input type="checkbox" value="pepperoni">Pepperoni</label>
+          </div>
+          <div class="checkbox-inline">
+            <label><input type="checkbox" value="sausage">Sausage</label>
+          </div>
+          <div class="checkbox-inline">
+            <label><input type="checkbox" value="cnBacon">Canadian Bacon</label>
+          </div>
+          <div class="checkbox-inline">
+            <label><input type="checkbox" value="groundBeef">Ground Beef</label>
+          </div>
+          <div class="checkbox-inline">
+            <label><input type="checkbox" value="anchovy">Anchovies</label>
+          </div>
+          <div class="checkbox-inline">
+            <label><input type="checkbox" value="chicken">Chicken</label>
+          </div>
         </div>
-        <div class="checkbox-inline">
-          <label><input type="checkbox" value="sausage">Sausage</label>
-        </div>
-        <div class="checkbox-inline">
-          <label><input type="checkbox" value="cnBacon">Canadian Bacon</label>
-        </div>
-        <div class="checkbox-inline">
-          <label><input type="checkbox" value="groundBeef">Ground Beef</label>
-        </div>
-        <div class="checkbox-inline">
-          <label><input type="checkbox" value="anchovy">Anchovies</label>
-        </div>
-        <div class="checkbox-inline">
-          <label><input type="checkbox" value="chicken">Chicken</label>
-        </div>
+
         <h3>We have many delicious vegetables to go with your meats, which ones do you want?</h3>
         <div class="checkbox-inline">
           <label><input type="checkbox" value="tomato">Tomatoes</label>
@@ -98,31 +111,34 @@
         <div class="checkbox-inline">
           <label><input type="checkbox" value="disgustingFilth">Pineapple</label>
         </div>
+
         <h3>And what sort of crust do you want?</h3>
         <div class="radio-inline">
-          <label><input type="radio" name="typeOfCrust">Regular Crust</label>
+          <label><input type="radio" name="typeOfCrust" value="regular" required>Regular Crust</label>
         </div>
         <div class="radio-inline">
-          <label><input type="radio" name="typeOfCrust">Cheesey Crust</label>
+          <label><input type="radio" name="typeOfCrust" value="cheeseCrust" required>Cheesey Crust</label>
         </div>
         <div class="radio-inline">
-          <label><input type="radio" name="typeOfCrust">Garlic Butter Crust</label>
+          <label><input type="radio" name="typeOfCrust" value="garlicCrust" required>Garlic Butter Crust</label>
         </div>
         <div class="radio-inline">
-          <label><input type="radio" name="typeOfCrust">Mama Mia SPICY Crust</label>
+          <label><input type="radio" name="typeOfCrust" value="spicyCrust" required>Mama Mia SPICY Crust</label>
         </div>
         <div class="radio-inline">
-          <label><input type="radio" name="typeOfCrust">House Special Crust (it is also spicy)</label>
+          <label><input type="radio" name="typeOfCrust" value="specialCrust" required>House Special Crust (it is also spicy)</label>
         </div>
         <br>
         <button id="pizzaTime" type="submit" class="btn btn-success">Show me the receipt!</button>
         </form>
         <br>
         <h3>Your pizza will cost: <span id="totalCost"></span></h3>
+      </form>
 
+      <br>
+
+      <h3>Your pizza will cost: <span id="totalCost"></span></h3>
 
     </div>
-
-
   </body>
 </html>

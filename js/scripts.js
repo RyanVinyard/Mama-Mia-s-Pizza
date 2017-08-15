@@ -1,50 +1,63 @@
-function Pizza(size, toppings, cheese, crust) {
+//Business logic
+function Pizza(size, cheese, sauce, meat, veggies, crust) {
   this.pizzaSize = size;
-  this.pizzaToppings = toppings;
   this.pizzaCheese = cheese;
+  this.pizzaSauce = sauce;
+  this.pizzaMeat = meat;
+  this.pizzaVeggies = veggies;
   this.pizzaCrust = crust;
 }
 
-Pizza.prototype.pizzaFinalCost = function(size, toppings, cheese, crust) {
-  var pizzaFinalCost = 0;
-  var toppings = [];
-  var cheese = 0;
-  var crust = 0;
-  if (this.pizzaSize === "Personal Pie-zano!") {
-    var pizzaFinalCost = pizzaFinalCost + 6;
-  } else if (this.pizzaSize === "Medium!") {
-    var pizzaFinalCost = pizzaFinalCost + 10;
-  } else if (this.pizzaSize === "Large!") {
-    var pizzaFinalCost = pizzaFinalCost + 14;
-  } else if (this.pizzaSize === "Super Mama Large!") {
-    var pizzaFinalCost = pizzaFinalCost + 16;
-  } else {alert:("Uh oh, something went wrong")}
-
-  if (this.cheeseAmount = "Lotsa Cheese!") {
-    var cheese = 3;
-  } else {
-    var cheese = 0;
+Pizza.prototype.pizzaFinalCost = function(size, cheese, sauce, meat, veggies, crust) {
+  var meat = [];
+  var veggies = [];
+  if (this.size === "small") {
+    var sizePrice = 6;
+  }
+  else if (this.size === "medium") {
+    var sizePrice = 10;
+  }
+  else if (this.size === "large") {
+    var sizePrice = 14;
+  }
+  else if (this.size === "xlarge") {
+    var sizePrice = 16;
   }
 
-  if (this.typeOfCrust = "Cheesey Crust") {
-    var crust = 3;
-  } else {
-    var crust = 0;
-  }
+  if (this.cheese === "extraCheese") {
+    var cheesePrice = 3;
+  } else {var cheesePrice = 0}
 
-  var toppings = (document.querySelectorAll('input[type="checkbox"]:checked').length);
-  if (toppings > 6) {
-    alert("Mama Mia you little garbanzo bean! You've got too many toppings! Pick 6 or less or the entire pie will be compromised, piazano!");
+  var meatPrice = $("#meatToppings:input[checked='checked']").length;
+  var veggiePrice = $("#veggieToppings:input[checked='checked']").length;
+  if (meatPrice + veggiePrice > 7) {
+    alert("Mama Mia, that's one loaded pizza! Here at Mama Mia's Pizzeria, we kindly request that you order your pizza with 7 or fewer toppings!")
     location.reload();
   }
-  var toppingsCost = toppings - 1
-  var pizzaFinalCost = pizzaFinalCost + toppings + cheese + crust;
+  var toppingsPrice = (meatPrice - 1) + (veggiePrice - 1);
+  if (toppingsPrice < 0) {
+    var toppingsPrice = 0;
   }
 
+  if (this.crust === "cheeseCrust") {
+    var crustPrice = 3;
+  } else {var crustPrice = 0}
+
+  var pizzaFinalCost = sizePrice + cheesePrice + meatPrice + veggiePrice + crustPrice;
+  console.log(sizePrice);
+  console.log(cheesePrice);
+  console.log(meatPrice);
+  console.log(veggiePrice);
+  console.log(crustPrice);
+  return pizzaFinalCost;
+}
+
+//User interface logic
 $(document).ready(function() {
   $("form#pizzaForm").submit(function(event) {
     event.preventDefault();
-    var size = $("input:radio[name=size]:checked").valu();
+    var size = $("input:radio[name=size]:checked").val();
+    var cheese = $("input:radio[name=cheeseAmount]:checked").val();
     var pizza = new Pizza(size);
     var totalCost = pizza.pizzaFinalCost();
     $("#totalCost").text("$" + totalCost + "!");
