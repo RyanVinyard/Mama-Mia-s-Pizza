@@ -1,82 +1,3 @@
-// //Business logic
-// function Pizza(size, cheese, sauce, meat, veggies, crust) {
-//   this.size = size;
-//   this.cheese = cheese;
-//   this.sauce = sauce;
-//   this.meat = meat;
-//   this.veggies = veggies;
-//   this.crust = crust;
-// }
-//
-// Pizza.prototype.calculateTotal = function() {
-//
-//   if (this.size === "small") {
-//     var sizePrice = 6;
-//   }
-//   else if (this.size === "medium") {
-//     var sizePrice = 10;
-//   }
-//   else if (this.size === "large") {
-//     var sizePrice = 14;
-//   }
-//   else if (this.size === "xlarge") {
-//     var sizePrice = 16;
-//   }
-//
-//   if (this.cheese === "extraCheese") {
-//     var cheesePrice = 3;
-//   }
-//
-//   console.log(this.meat);
-//   var meatPrice = 0;
-//   for (var i=0; i<this.meat.length; i++) {
-//     var meatPrice = 1;
-//   }
-//
-//   if (meatPrice === 1) {
-//     var meatPrice = 0;
-//   }
-//
-//   var veggiePrice = 0;
-//   for (var i=0; i<this.veggies.length; i++) {
-//     var veggiePrice = 1;
-//   }
-//
-//   if (veggiePrice === 1) {
-//     var veggiePrice = 0;
-//   }
-//
-//   if (this.crust === "cheeseCrust") {
-//     var cheesePrice = 3;
-//   }
-//
-//   this.price = sizePrice + cheesePrice + meatPrice + veggiePrice;
-// }
-//
-// var displayReceipt = function() {
-//   $('#receipt').html(this.size + " pizza" + "<br>" + this.crust + "<br>" + "");
-// }
-//
-//
-// //Front end logic
-// $(document).ready(function() {
-//   $("form#pizzaForm").submit(function(event) {
-//     event.preventDefault();
-//
-//     var size = $("input:radio[name=size]:checked").val();
-//     var cheese = $("input:radio[name=cheeseAmount]:checked").val();
-//     var crust = $("input:radio[name=typeOfCrust]:checked").val();
-//     var meat = [];
-//     meat.push(("input:checkbox[name=meat]:checked").val());
-//     var veggies = [];
-//     veggies.push(("input:checkbox[name=veggies]:checked").val());
-//     var newPizza = new Pizza(size, cheese, meat, veggies, crust);
-//     newPizza.calculateTotal();
-//
-//     $("#totalCost").text("$" + totalCost + "!");
-//   });
-// });
-
 function buildOrder() {
   var text1 = "";
   var text2 = "";
@@ -84,12 +5,6 @@ function buildOrder() {
   var sizePrice = 0;
   var size = $('input[name=size]:checked').val();
   var text1 = text1 + size + "<br>"
-  // for (var i=0; i<sizeArray.length; i++) {
-  //   if (sizeArray[i].checked) {
-  //     var selectedSize = sizeArray[i].value;
-  //     var text1 = text1 + selectedSize + "<br>"
-  //   }
-  // }
   if (size === "small") {
     var sizePrice = 6;
     var text2 = text2 + sizePrice + "<br>";

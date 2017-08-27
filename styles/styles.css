@@ -1,3 +1,103 @@
 #receipt {
   display: none;
 }
+
+#pizzaSize {
+display: block;
+margin: auto;
+text-align: center;
+}
+
+#cheeseAmount {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+#sauceSelection {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+#meatToppings {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+#veggieToppings {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+#crustSelection {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+
+
+#pizzaTime {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  box-shadow: 0 7px #999;
+  background-color: #4CAF50;
+}
+
+#pizzaTime:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+
+}
+
+h1 {
+  text-align: center;
+  padding: 8px;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.jumbotron {
+  margin: 30px;
+  padding: 10px;
+  background-color: #800000;
+  color: black;
+}
+
+body {
+  background-color: #666699;
+}
+
+#sidebar-wrapper {
+  background-color: white;
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: white;
+
+}
+
+#wrapper {
+  background-color: white;
+  padding-left: 0;
+
+}
