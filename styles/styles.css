@@ -50,11 +50,21 @@ text-align: center;
   background-color: #4CAF50;
 }
 
+#pizzaTime:hover {
+  background-color: #003300;
+  transition-delay: 1s;
+  -webkit-transition-delay: 1s;
+  transition: background-color 1s linear;
+}
+
 #pizzaTime:active {
   background-color: #3e8e41;
   box-shadow: 0 2px #666;
   transform: translateY(4px);
+}
 
+hr {
+  border-color: black;
 }
 
 h1 {
@@ -75,12 +85,12 @@ h3 {
 .jumbotron {
   margin: 30px;
   padding: 10px;
-  background-color: #800000;
-  color: black;
+  background-color: #e6e6e6;
+  opacity: 0.95;
 }
 
 body {
-  background-color: #666699;
+  background-color: #800000;
 }
 
 #sidebar-wrapper {
@@ -99,5 +109,4 @@ body {
 #wrapper {
   background-color: white;
   padding-left: 0;
-
 }

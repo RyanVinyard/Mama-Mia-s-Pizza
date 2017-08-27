@@ -1,34 +1,32 @@
 function buildOrder() {
   var text1 = "";
-  var text2 = "";
   var pizzaCost = 0;
   var sizePrice = 0;
   var size = $('input[name=size]:checked').val();
-  var text1 = text1 + size + "<br>"
-  if (size === "small") {
+  var text1 = text1 + size + " Pizza:" + "<br>"
+  if (size === "Small") {
     var sizePrice = 6;
-    var text2 = text2 + sizePrice + "<br>";
-  } else if (size === "medium") {
+    var text1 = text1 + "Base Price: $" + sizePrice + "<br><br>";
+  } else if (size === "Medium") {
     var sizePrice = 10;
-    var text2 = text2 + sizePrice + "<br>";
-  } else if (size === "large") {
+    var text1 = text1 + "Base Price: $" + sizePrice + "<br><br>";
+  } else if (size === "Large") {
     var sizePrice = 14;
-    var text2 = text2 + sizePrice + "<br>";
-  } else if (size === "xlarge") {
+    var text1 = text1 + "Base Price: $" + sizePrice + "<br><br>";
+  } else if (size === "Extra Large") {
     var sizePrice = 16;
-    var text2 = text2 + sizePrice + "<br>";
+    var text1 = text1 + "Base Price: $" + sizePrice + "<br><br>";
   }
   var pizzaCost = sizePrice;
-  getMeat(pizzaCost, text1, text2);
+  getMeat(pizzaCost, text1);
 
 };
 
-function getMeat(pizzaCost, text1, text2) {
+function getMeat(pizzaCost, text1) {
   var pizzaCost = pizzaCost;
   var meatPrice = 0;
   var meatToppings = [];
   var meatToppingsArray = document.getElementsByClassName("meat");
-  console.log(meatToppingsArray);
   for (var i=0; i<meatToppingsArray.length; i++) {
     if (meatToppingsArray[i].checked) {
       meatToppings.push(meatToppingsArray[i].value);
@@ -42,24 +40,25 @@ function getMeat(pizzaCost, text1, text2) {
   }
   var pizzaCost = pizzaCost + meatPrice;
   for (var i=0; i<meatToppings.length; i++) {
-    console.log(meatToppings[i]);
     var text1 = text1 + meatToppings[i] + "<br>";
     if (meatToppingsAmount <= 1) {
-      var text2 = text2 + 0 + "<br>";
-      var meatToppingsAmount = meatToppingsAmount - 1;
-    } else if (meatToppingsAmount == 2) {
-      var text2 = text2 + 1 + "<br>";
-      var meatToppingsAmount = meatToppingsAmount - 1;
-    } else {
-      var text2 = text2 + 1 + "<br>";
-      var meatToppingsAmount = meatToppingsAmount - 1;
+      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      break;
+    } else if (meatToppingsAmount > 1) {
+      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      var i = i + 1;
+      for (var j=1; j<meatToppingsAmount; j++) {
+        var text1 = text1 + meatToppings[j] + "<br>";
+        var text1 = text1 + "+ $" + 1 + "<br><br>";
+        var i = i + 1;
+      }
     }
   }
-  getVeggie(pizzaCost, text1, text2);
+  getVeggie(pizzaCost, text1);
 };
 
 
-function getVeggie(pizzaCost, text1, text2) {
+function getVeggie(pizzaCost, text1) {
   var pizzaCost = pizzaCost;
   var veggiePrice = 0;
   var veggieToppings = [];
@@ -80,51 +79,62 @@ function getVeggie(pizzaCost, text1, text2) {
   for (var i=0; i<veggieToppings.length; i++) {
     var text1 = text1 + veggieToppings[i] + "<br>";
     if (veggieToppingsAmount <= 1) {
-      var text2 = text2 + 0 + "<br>";
-      var veggieToppingsAmount = veggieToppingsAmount - 1;
-    } else if (veggieToppingsAmount == 2) {
-      var text2 = text2 + 1 + "<br>";
-      var veggieToppingsAmount = veggieToppingsAmount - 1;
-    } else {
-      var text2 = text2 + 1 + "<br>";
-      var veggieToppingsAmount = veggieToppingsAmount - 1;
+      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      break;
+    } else if (veggieToppingsAmount > 1) {
+      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      var i = i + 1;
+      for (var j=1; j<veggieToppingsAmount; j++) {
+        var text1 = text1 + veggieToppings[j] + "<br>";
+        var text1 = text1 + "+ $" + 1 + "<br><br>";
+        var i = i + 1;
+      }
     }
   }
-  getCheese(pizzaCost, text1, text2);
+  getCheese(pizzaCost, text1);
   };
 
-  function getCheese(pizzaCost, text1, text2) {
+  function getCheese(pizzaCost, text1) {
     var cheese = $('input[name=cheeseAmount]:checked').val();
     var cheesePrice = 0;
-    if (cheese === "extraCheese") {
+    if (cheese === "Extra Cheese") {
       var cheesePrice = 3
-    }
-    var text2 = text2 + cheesePrice + "<br>";
+    } else if (cheese === "No Cheese" || cheese === "Regular Cheese") {
+      var text1 = text1 + cheese + "<br>" + "-- Complimentary" + "<br><br>";
+    } else {
     var text1 = text1 + cheese + "<br>";
+    var text1 = text1 + "+ $" + cheesePrice + "<br><br>";
     var pizzaCost = (pizzaCost + cheesePrice);
-    getSauce(pizzaCost, text1, text2);
+    }
+    getSauce(pizzaCost, text1);
 
   };
 
-  function getSauce(pizzaCost, text1, text2) {
+  function getSauce(pizzaCost, text1) {
     var sauce = $('input[name=sauce]:checked').val();
-    console.log(sauce);
-    var text2 = text2 + 0 + "<br>";
-    getCrust(pizzaCost, text1, text2)
+    if (sauce === "No Sauce") {
+    var text1 = text1 + sauce + "<br><br>";
+    } else {
+    var text1 = text1 + sauce + "<br>";
+    var text1 = text1 + "-- Complimentary" + "<br><br>";
+    }
+    getCrust(pizzaCost, text1)
   };
 
-  function getCrust(pizzaCost, text1, text2) {
+  function getCrust(pizzaCost, text1) {
     var crust = $('input[name=typeOfCrust]:checked').val();
-    console.log(crust);
     var crustPrice = 0;
-    if (crust === "cheeseCrust") {
+    if (crust != "Cheese Stuffed Crust") {
+      var text1 = text1 + crust + "<br>";
+      var text1 = text1 + "-- Complimentary" + "<br><br>";
+    } else if (crust === "Cheese Stuffed Crust") {
       var crustPrice = 3;
+      var text1 = text1 + crust + "<br>";
+      var text1 = text1 + "+ $" + crustPrice + "<br><br>";
     }
     var pizzaCost = (pizzaCost + crustPrice);
-    var text2 = text2 + crustPrice + "<br>";
     document.getElementById("receipt").style.display="block";
     document.getElementById("showText1").innerHTML=text1;
-    document.getElementById("showText2").innerHTML=text2;
     document.getElementById("totalPrice2").innerHTML = "</h3>$" + pizzaCost + ".00" + "</h3>"
   }
 
