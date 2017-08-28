@@ -1,28 +1,29 @@
+//This function starts the order process. It sets up a blank string for each "piece" of the order, then establishes a base price from size. It passes this info to the next function, getMeat()
 function buildOrder() {
-  var text1 = "";
+  var orderPieces = "";
   var pizzaCost = 0;
   var sizePrice = 0;
   var size = $('input[name=size]:checked').val();
-  var text1 = text1 + size + " Pizza:" + "<br>"
+  var orderPieces = orderPieces + size + " Pizza:" + "<br>"
   if (size === "Small") {
     var sizePrice = 6;
-    var text1 = text1 + "Base Price: $" + sizePrice + "<br><br>";
+    var orderPieces = orderPieces + "Base Price: $" + sizePrice + "<br><br>";
   } else if (size === "Medium") {
     var sizePrice = 10;
-    var text1 = text1 + "Base Price: $" + sizePrice + "<br><br>";
+    var orderPieces = orderPieces + "Base Price: $" + sizePrice + "<br><br>";
   } else if (size === "Large") {
     var sizePrice = 14;
-    var text1 = text1 + "Base Price: $" + sizePrice + "<br><br>";
+    var orderPieces = orderPieces + "Base Price: $" + sizePrice + "<br><br>";
   } else if (size === "Extra Large") {
     var sizePrice = 16;
-    var text1 = text1 + "Base Price: $" + sizePrice + "<br><br>";
+    var orderPieces = orderPieces + "Base Price: $" + sizePrice + "<br><br>";
   }
   var pizzaCost = sizePrice;
-  getMeat(pizzaCost, text1);
-
+  getMeat(pizzaCost, orderPieces);
 };
 
-function getMeat(pizzaCost, text1) {
+//This function finds everything that is checked under meat ingredients, pushes it into the array meatToppings, then iterates through each topping to list the first one as complimentary and the rest as an extra dollar. The example always listed the LAST topping as complimentary, not the first. This bothered me, so I solved it with a nested for loop which admittedely gave me a bit of a headache. I hope it is still close to best practice.
+function getMeat(pizzaCost, orderPieces) {
   var pizzaCost = pizzaCost;
   var meatPrice = 0;
   var meatToppings = [];
@@ -40,25 +41,25 @@ function getMeat(pizzaCost, text1) {
   }
   var pizzaCost = pizzaCost + meatPrice;
   for (var i=0; i<meatToppings.length; i++) {
-    var text1 = text1 + meatToppings[i] + "<br>";
+    var orderPieces = orderPieces + meatToppings[i] + "<br>";
     if (meatToppingsAmount <= 1) {
-      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      var orderPieces = orderPieces + "-- Complimentary" + "<br><br>";
       break;
     } else if (meatToppingsAmount > 1) {
-      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      var orderPieces = orderPieces + "-- Complimentary" + "<br><br>";
       var i = i + 1;
       for (var j=1; j<meatToppingsAmount; j++) {
-        var text1 = text1 + meatToppings[j] + "<br>";
-        var text1 = text1 + "+ $" + 1 + "<br><br>";
+        var orderPieces = orderPieces + meatToppings[j] + "<br>";
+        var orderPieces = orderPieces + "+ $" + 1 + "<br><br>";
         var i = i + 1;
       }
     }
   }
-  getVeggie(pizzaCost, text1);
+  getVeggie(pizzaCost, orderPieces);
 };
 
-
-function getVeggie(pizzaCost, text1) {
+//Turns out, this is the same function as getMeat if you just ctrl + f and replace "Meat" with "Veggie"
+function getVeggie(pizzaCost, orderPieces) {
   var pizzaCost = pizzaCost;
   var veggiePrice = 0;
   var veggieToppings = [];
@@ -77,76 +78,81 @@ function getVeggie(pizzaCost, text1) {
   }
   var pizzaCost = pizzaCost + veggiePrice;
   for (var i=0; i<veggieToppings.length; i++) {
-    var text1 = text1 + veggieToppings[i] + "<br>";
+    var orderPieces = orderPieces + veggieToppings[i] + "<br>";
     if (veggieToppingsAmount <= 1) {
-      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      var orderPieces = orderPieces + "-- Complimentary" + "<br><br>";
       break;
     } else if (veggieToppingsAmount > 1) {
-      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      var orderPieces = orderPieces + "-- Complimentary" + "<br><br>";
       var i = i + 1;
       for (var j=1; j<veggieToppingsAmount; j++) {
-        var text1 = text1 + veggieToppings[j] + "<br>";
-        var text1 = text1 + "+ $" + 1 + "<br><br>";
+        var orderPieces = orderPieces + veggieToppings[j] + "<br>";
+        var orderPieces = orderPieces + "+ $" + 1 + "<br><br>";
         var i = i + 1;
       }
     }
   }
-  getCheese(pizzaCost, text1);
+  getCheese(pizzaCost, orderPieces);
   };
 
-  function getCheese(pizzaCost, text1) {
+//This is the cheese function. Pretty simple. Takes the checked item's value and sets the var cheese equal to it. Then it checks if it is extra to print out + $3, or if it is No Cheese to print nothing. I thought it was awkaward to put $0 or "complimentary" next to no cheese, so if you pick no cheese it just says no cheese.
+  function getCheese(pizzaCost, orderPieces) {
     var cheese = $('input[name=cheeseAmount]:checked').val();
     var cheesePrice = 0;
     if (cheese === "Extra Cheese") {
       var cheesePrice = 3
     } else if (cheese === "No Cheese" || cheese === "Regular Cheese") {
-      var text1 = text1 + cheese + "<br>" + "-- Complimentary" + "<br><br>";
+      var orderPieces = orderPieces + cheese + "<br>" + "-- Complimentary" + "<br><br>";
     } else {
-    var text1 = text1 + cheese + "<br>";
-    var text1 = text1 + "+ $" + cheesePrice + "<br><br>";
+    var orderPieces = orderPieces + cheese + "<br>";
+    var orderPieces = orderPieces + "+ $" + cheesePrice + "<br><br>";
     var pizzaCost = (pizzaCost + cheesePrice);
     }
-    getSauce(pizzaCost, text1);
+    getSauce(pizzaCost, orderPieces);
 
   };
 
-  function getSauce(pizzaCost, text1) {
+//Very similar to getCheese()
+  function getSauce(pizzaCost, orderPieces) {
     var sauce = $('input[name=sauce]:checked').val();
     if (sauce === "No Sauce") {
-    var text1 = text1 + sauce + "<br><br>";
+    var orderPieces = orderPieces + sauce + "<br><br>";
     } else {
-    var text1 = text1 + sauce + "<br>";
-    var text1 = text1 + "-- Complimentary" + "<br><br>";
+    var orderPieces = orderPieces + sauce + "<br>";
+    var orderPieces = orderPieces + "-- Complimentary" + "<br><br>";
     }
-    getCrust(pizzaCost, text1)
+    getCrust(pizzaCost, orderPieces)
   };
 
-  function getCrust(pizzaCost, text1) {
+//Very similar to getCheese and getSauce, but at the end it actually prints out the receipt.
+  function getCrust(pizzaCost, orderPieces) {
     var crust = $('input[name=typeOfCrust]:checked').val();
     var crustPrice = 0;
     if (crust != "Cheese Stuffed Crust") {
-      var text1 = text1 + crust + "<br>";
-      var text1 = text1 + "-- Complimentary" + "<br><br>";
+      var orderPieces = orderPieces + crust + "<br>";
+      var orderPieces = orderPieces + "-- Complimentary" + "<br><br>";
     } else if (crust === "Cheese Stuffed Crust") {
       var crustPrice = 3;
-      var text1 = text1 + crust + "<br>";
-      var text1 = text1 + "+ $" + crustPrice + "<br><br>";
+      var orderPieces = orderPieces + crust + "<br>";
+      var orderPieces = orderPieces + "+ $" + crustPrice + "<br><br>";
     }
     var pizzaCost = (pizzaCost + crustPrice);
     document.getElementById("receipt").style.display="block";
-    document.getElementById("showText1").innerHTML=text1;
-    document.getElementById("totalPrice2").innerHTML = "</h3>$" + pizzaCost + ".00" + "</h3>"
+    document.getElementById("showPrice").innerHTML=orderPieces;
+    document.getElementById("totalPrice").innerHTML = "</h3>$" + pizzaCost + ".00" + "</h3>"
   }
 
+//I didn't even think to add an order clearing function until I looked at the example. Thank you for that, it was very helpful.
   function clearOrder() {
     var clearBoolean = confirm("Mama Mia, are you sure you want to clear this order?");
     if (clearBoolean == true) {
     document.getElementById("pizzaForm").reset();
     document.getElementById("receipt").style.display="none";
     location.reload();
-  }
+    }
   };
 
+//This is where I differ a lot from the example (I assume). I knew that using jQuery would make this more efficient, and I was taught at some point to try to seperate all jQuery into a document.ready function. Of course, I didn't manage to do that, but this makes the submit button more of an actual submit button, if I ever wanted to flesh out this webpage.
   $(document).ready(function() {
     $("form#pizzaForm").submit(function(event) {
       event.preventDefault();
