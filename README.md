@@ -1,24 +1,24 @@
 # _Mama Mia's Pizzeria_
 
-#### _An exercise in JavaScript, July 2017_
+#### _An exercise in JavaScript, August 2017_
 
 #### By _**Ryan Vinyard**_
 
 ## Description
 
-_This will let you build a custom pizza and display a receipt. Also, it will look nice. Hopefully._
+_This will let you build a custom pizza and display a receipt._
 
 ## Features
 
-* _To do_
+* _Can build a pizza with any combination of ingredients, list out the receipt, and clear the receipt._
 
 ## Setup/Installation Requirements
 
-* _To be completed_
+* _Clone this repository, and open index.html_
 
 ## Known Bugs
 
-_To be completed_
+_None_
 
 ## Support and contact details
 
