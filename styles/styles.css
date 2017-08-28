@@ -136,3 +136,7 @@ h3 {
 body {
   background-color: #800000;
 }
+
+p {
+  border: 1px solid black;
+}
